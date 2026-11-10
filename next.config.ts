@@ -8,6 +8,12 @@ const nextConfig: NextConfig = {
     }
     return config;
   },
+  images: {
+    remotePatterns: [
+      new URL('https://unsplash.com**'),
+      new URL('https://unsplash.com'), 
+    ],
+  },
 };
 
 export default nextConfig;

@@ -32,23 +32,19 @@ export default function Dashboard() {
   const [isFoodModalOpen, setIsFoodModalOpen] = useState(false);
   
   // ⚡ CONFIGURATION: Set TEST_MODE to true for a 10-second trigger, false for real 45-minute production run
-  const TEST_MODE = true;
+  const TEST_MODE = false;
   const TRIGGER_TIME = TEST_MODE ? 10 * 1000 : 45 * 60 * 1000;
 
-  const [checkingAuth] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const token = localStorage.getItem('token');
-      return !token;
-    }
-    return true;
-  });
+  const [checkingAuth, setCheckingAuth] = useState(true);
 
-  // Redirection guard for session authentication
+  // Runs only in the browser, after the first render
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
-      router.push('/login');
+      router.replace('/login');
+      return;
     }
+    setCheckingAuth(false);
   }, [router]);
 
   // ⏱️ TRACKER EFFECT: Monitors total active session duration

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Star, Play, Plus } from 'lucide-react';
+import Image from 'next/image';
 
 interface MovieCard {
   id: number;
@@ -38,11 +39,13 @@ export default function MovieRow({ title, movies }: MovieRowProps) {
           >
             {/* Poster Aspect Container */}
             <div className="aspect-[2/3] w-full relative overflow-hidden bg-zinc-950">
-              <img
+              <Image
                 src={movie.posterUrl}
                 alt={movie.title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
+                fill
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
               />
               {/* Dark Hover Shade Mask */}
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 space-y-2" >
