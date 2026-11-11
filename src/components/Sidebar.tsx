@@ -50,7 +50,7 @@ export default function Sidebar({ activeMenu, setActiveMenu }: SidebarProps) {
         <div className="flex items-center justify-between mb-8 px-2">
           {!isCollapsed && (
             <h1 className="text-xl font-black text-[#e50914] tracking-wider transition-opacity duration-200">
-              CINE<span className="text-white font-medium">SNACK</span>
+              CINE<span className="text-white font-medium">SNACKHUB</span>
             </h1>
           )}
           <button 
